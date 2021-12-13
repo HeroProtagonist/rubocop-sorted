@@ -43,22 +43,55 @@ module RuboCop
       #   good_foo_method(args)
       #
       class SortHashKeys < Base
-        # TODO: Implement the cop in here.
-        #
-        # In many cases, you can use a node matcher for matching node pattern.
-        # See https://github.com/rubocop/rubocop-ast/blob/master/lib/rubocop/ast/node_pattern.rb
-        #
-        # For example
-        MSG = 'Use `#good_method` instead of `#bad_method`.'
+        extend AutoCorrector
 
-        def_node_matcher :bad_method?, <<~PATTERN
-          (send nil? :bad_method ...)
-        PATTERN
+        MSG = 'Key is not sorted alphabetically'
 
-        def on_send(node)
-          return unless bad_method?(node)
+        def on_hash(node)
+          @node = node
 
-          add_offense(node)
+          return if hash_keys.map(&method(:str_from)) == sorted_key_strings
+
+          add_offense_to_keys
+          add_offense_to_hash
+        end
+
+        private
+
+        attr_reader :node
+
+        def hash_keys
+          @hash_keys ||= node.keys
+        end
+
+        def sorted_key_strings
+          @sorted_key_strings ||= hash_keys.map(&method(:str_from)).sort
+        end
+
+        def add_offense_to_keys
+          sorted_key_strings.each_with_index do |key, index|
+            unsorted_key_node = hash_keys[index]
+            add_offense(unsorted_key_node) if key != str_from(unsorted_key_node)
+          end
+        end
+
+        def add_offense_to_hash
+          message = 'Hash keys are not sorted alphabetically'
+
+          add_offense(node, message: message) do |corrector|
+            node.
+              each_pair.
+              sort_by(&method(:str_from)).
+              each_with_index do |pair, index|
+                corrector.replace(node.children[index], pair.source)
+              end
+          end
+        end
+
+        def str_from(ast_node)
+          return ast_node.key.value.to_s if ast_node.is_a?(AST::PairNode)
+
+          ast_node.value.to_s
         end
       end
     end
