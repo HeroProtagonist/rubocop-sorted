@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Rubocop::Sorted do
+RSpec.describe RuboCop::Sorted do
   it "has a version number" do
     expect(Rubocop::Sorted::VERSION).not_to be nil
   end
