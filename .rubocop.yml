@@ -1,3 +1,13 @@
+require:
+  - rubocop-rake
+  - rubocop-rspec
+
 Naming/FileName:
  Exclude:
    - lib/rubocop-sorted.rb
+
+Metrics/BlockLength:
+  Max: 30
+
+RSpec/ExampleLength:
+  Max: 20

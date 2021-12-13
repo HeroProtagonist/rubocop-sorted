@@ -79,10 +79,10 @@ module RuboCop
           message = 'Hash keys are not sorted alphabetically'
 
           add_offense(node, message: message) do |corrector|
-            node.
-              each_pair.
-              sort_by(&method(:str_from)).
-              each_with_index do |pair, index|
+            node
+              .each_pair
+              .sort_by(&method(:str_from))
+              .each_with_index do |pair, index|
                 corrector.replace(node.children[index], pair.source)
               end
           end
