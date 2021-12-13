@@ -1,6 +1,4 @@
-# Write it!
-
 Sorted/SortHashKeys:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
-  VersionAdded: '<<next>>'
+  Description: 'Checks that hash keys are sorted alphabetically'
+  Enabled: false
+  VersionAdded: '0.1.0'
