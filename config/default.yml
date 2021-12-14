@@ -2,3 +2,4 @@ Sorted/SortHashKeys:
   Description: 'Checks that hash keys are sorted alphabetically'
   Enabled: false
   VersionAdded: '0.1.0'
+  VariableNamesToCheck: []

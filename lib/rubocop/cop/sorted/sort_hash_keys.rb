@@ -50,6 +50,8 @@ module RuboCop
         def on_hash(node)
           @node = node
 
+          return if targeted_investigation? && !variable_of_interest?
+
           return if hash_keys.map(&method(:str_from)) == sorted_key_strings
 
           add_offense_to_keys
@@ -92,6 +94,21 @@ module RuboCop
           return ast_node.key.value.to_s if ast_node.is_a?(AST::PairNode)
 
           ast_node.value.to_s
+        end
+
+        def targeted_investigation?
+          variable_names_to_check.is_a?(Array) && variable_names_to_check.any?
+        end
+
+        def variable_of_interest?
+          return false unless node.parent.assignment?
+
+          variable_name = node.parent.children.first.to_s
+          variable_names_to_check.include?(variable_name)
+        end
+
+        def variable_names_to_check
+          @variable_names_to_check ||= cop_config['VariableNamesToCheck']
         end
       end
     end
