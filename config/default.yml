@@ -1,5 +1,5 @@
 Sorted/SortHashKeys:
   Description: 'Checks that hash keys are sorted alphabetically'
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.1.0'
   VariableNamesToCheck: []
