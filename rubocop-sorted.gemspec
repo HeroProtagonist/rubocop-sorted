@@ -7,13 +7,11 @@ Gem::Specification.new do |spec|
   spec.version       = RuboCop::Sorted::VERSION
   spec.authors       = ['HeroProtagonist']
 
-  spec.summary       = ''
-  # spec.description   = "TODO: Write a longer description or delete this line."
+  spec.summary       = 'Rubocop extension used to enforce that the keys of a hash are sorted alphabetically'
+  # spec.description   = ''
   spec.homepage      = 'https://github.com/HeroProtagonist/rubocop-sorted'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
-
-  # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/HeroProtagonist/rubocop-sorted'

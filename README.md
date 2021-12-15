@@ -1,8 +1,6 @@
 # Rubocop::Sorted
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rubocop/sorted`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+[Rubocop](https://github.com/rubocop/rubocop) extension used to enforce that the keys of a hash are sorted alphabetically
 
 ## Installation
 
@@ -22,7 +20,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You need to tell RuboCop to load the Sorted extension. There are three ways to do this:
+
+### RuboCop configuration file
+
+Put this into your `.rubocop.yml`.
+
+```yaml
+require: rubocop-sorted
+```
+
+Alternatively, use the following array notation when specifying multiple extensions.
+
+```yaml
+require:
+  - rubocop-other-extension
+  - rubocop-sorted
+```
+
+Now you can run `rubocop` and it will automatically load the RuboCop Sorted cops together with the standard cops.
+
+### Command line
+
+```sh
+rubocop --require rubocop-sorted
+```
 
 ## Development
 
