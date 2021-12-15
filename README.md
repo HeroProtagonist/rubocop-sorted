@@ -1,5 +1,7 @@
 # Rubocop::Sorted
 
+![ruby workflow](https://github.com/HeroProtagonist/rubocop-sorted/actions/workflows/ruby.yml/badge.svg)
+
 [Rubocop](https://github.com/rubocop/rubocop) extension used to enforce that the keys of a hash are sorted alphabetically
 
 ## Installation
