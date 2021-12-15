@@ -8,6 +8,8 @@ Naming/FileName:
 
 Metrics/BlockLength:
   Max: 30
+  Exclude:
+    - 'spec/**/*'
 
 RSpec/ExampleLength:
   Max: 20
