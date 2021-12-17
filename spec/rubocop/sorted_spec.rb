@@ -2,6 +2,6 @@
 
 RSpec.describe RuboCop::Sorted do
   it 'has a version number' do
-    expect(RuboCop::Sorted::VERSION).to be('0.1.0')
+    expect(RuboCop::Sorted::VERSION).to be('0.2.1')
   end
 end
